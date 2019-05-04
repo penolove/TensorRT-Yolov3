@@ -9,7 +9,14 @@
     Ubuntu  16.04
     TensorRT 5.0.2.6/4.0.1.6
     CUDA 9.2
+    OPENCV
 
+```
+# make sure opencv installed
+apt-get install libopencv-dev
+export OpenCV_DIR=/usr/share/OpenCV
+```
+    
 ### Models
 
 Download the caffe model converted by official model:
@@ -43,16 +50,16 @@ cd build && cmake .. && make && make install
 cd ..
 
 #for yolov3-608
-./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608.prototxt --input=./test.jpg --W=608 --H=608 --class=80
+./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608_trt.prototxt --input=./test.jpg --W=608 --H=608 --class=80
 
 #for fp16
-./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608.prototxt --input=./test.jpg --W=608 --H=608 --class=80 --mode=fp16
+./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608_trt.prototxt --input=./test.jpg --W=608 --H=608 --class=80 --mode=fp16
 
 #for int8 with calibration datasets
-./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608.prototxt --input=./test.jpg --W=608 --H=608 --class=80 --mode=int8 --calib=./calib_sample.txt
+./install/runYolov3 --caffemodel=./yolov3_608.caffemodel --prototxt=./yolov3_608_trt.prototxt --input=./test.jpg --W=608 --H=608 --class=80 --mode=int8 --calib=./calib_sample.txt
 
 #for yolov3-416 (need to modify include/YoloConfigs for YoloKernel)
-./install/runYolov3 --caffemodel=./yolov3_416.caffemodel --prototxt=./yolov3_416.prototxt --input=./test.jpg --W=416 --H=416 --class=80
+./install/runYolov3 --caffemodel=./yolov3_416.caffemodel --prototxt=./yolov3_416_trt.prototxt --input=./test.jpg --W=416 --H=416 --class=80
 ```
 
 
